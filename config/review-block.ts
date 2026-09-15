@@ -5,5 +5,9 @@ export const reviewBlockConfig = {
   expectedSheet: 'KPI_Source',
   sourceSchema: 'm_t658_v1',
   staleCompetitionLabel: 'National Premier League',
-  currentSlideOrder: ['title', 'seasonTotals', 'topScorers', 'notes'],
+  // Reconciled 2026-09-15: legacy seasonTotals slide removed (SEASON_TOTAL not approved);
+  // order reflects approved metrics, calculated rankings, and coach selections.
+  currentSlideOrder: ['title', 'approvedMetrics', 'calculatedRankings', 'coachSelections', 'notes'],
+  // Workbook not present in OneDrive as of 2026-09-15; formula comparison PENDING.
+  formulaComparison: 'pending',
 };

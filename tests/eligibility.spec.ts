@@ -1,10 +1,13 @@
-import { eligibleForAward, legacyMinutesThreshold } from '../src/coachPack';
+import { eligibleForAward, approvedMinutesThreshold } from '../src/coachPack';
 
-describe('legacy eligibility baseline', () => {
-  it('still demonstrates the old threshold', () => {
-    expect(legacyMinutesThreshold).toBe(450);
-    expect(eligibleForAward(486)).toBe(true);
+describe('approved eligibility rule', () => {
+  it('applies the approved 540-minute threshold', () => {
+    expect(approvedMinutesThreshold).toBe(540);
+    expect(eligibleForAward(546)).toBe(true); // P10: lowest eligible volume in the block
+    expect(eligibleForAward(540)).toBe(true); // threshold is inclusive
+    expect(eligibleForAward(534)).toBe(false); // P11: visible but ineligible
   });
 });
 
-// Replace after reconciling the approved 540-minute rule and source workbook formulas.
+// Workbook formula comparison remains pending until
+// M-T658-V1 Coach Review Source.xlsx (KPI_Source) is available.
